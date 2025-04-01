@@ -1,0 +1,238 @@
+<script id="ch0105/01">
+
+    var n = +prompt("n")
+
+    var account = 0
+    var ageSum = 0
+
+    while (account < n) {
+        var age = +prompt("age")
+        account = account + 1
+        ageSum = ageSum + age
+    }
+
+
+    var ageAverage = ageSum / n
+
+    console.log(ageAverage)
+
+
+
+</script>
+
+<script id="ch0105/02">
+
+
+
+    var account = 0
+    var moneySum = 0
+
+    while (account < 12) {
+        var money = +prompt("money")
+        account = account + 1
+        moneySum = moneySum + money
+    }
+
+
+    var moneyAverage = moneySum / 12
+
+    console.log(moneyAverage)
+
+
+
+</script>
+
+<script id="ch0105/03">
+
+    var n = +prompt("n")
+
+    var account = 0
+    var sampleSum = 0
+
+    while (account < n) {
+        var sample = +prompt("sample")
+        account = account + 1
+        sampleSum = sampleSum + sample
+    }
+
+
+    var sampleAverage = sampleSum / n
+
+    console.log(sampleAverage)
+
+
+
+</script>
+
+<script id="ch0105/04">
+
+    var n = +prompt("n")
+
+    var account = 0
+    var numberSum = 0
+
+    while (account < n) {
+        var number = +prompt("number")
+        account = account + 1
+        numberSum = numberSum + number
+    }
+
+
+    var numberAverage = numberSum / n
+
+    console.log(numberSum)
+    console.log(numberAverage)
+
+
+</script>
+
+<script id="ch0105/05">
+
+    var n = +prompt("n")
+
+    var account = 0
+    var biggerStore = -Infinity
+
+    while (account < n) {
+        var number = +prompt("number")
+        if (biggerStore < number) { biggerStore = number }
+
+    }
+
+
+    console.log(biggerStore)
+
+
+</script>
+
+<script id="ch0105/06">
+
+    var n = +prompt("n")
+
+    var account = 0
+    var biggerStore = -Infinity
+    var smallerStore = Infinity
+    while (account < n) {
+        var number = +prompt("number")
+        if (biggerStore < number) { biggerStore = number }
+        if (smallerStore > number) { smallerStore = number }
+
+
+    }
+
+    var step = biggerStore - smallerStore
+    console.log(step)
+
+
+
+</script>
+
+<script id="ch0105/07">
+
+    var n = +prompt("days")
+
+    var account = 0
+
+    var goldsum = 0
+    var silversum = 0
+    var bronzesum = 0
+
+    while (account < n) {
+        goldsum = goldsum + prompt("第" + n + "天金牌数：")
+        silversum = silversum + prompt("第" + n + "天银牌数：")
+        bronzesum = bronzesum + Prompt("第" + n + "天,铜牌数：")
+    }
+    var allsum = goldsum + silversum + bronzesum
+    console.log(goldsum, silversum, bronzesum, allsum)
+</script>
+
+<script id="ch0105/08">
+    var n = +prompt("n")
+    sumGiven = 0
+    account = 0
+    while (account < n - 1) {
+        sumGiven = sumGiven + prompt("anyone")
+
+    }
+
+
+    sumleft = (n - 2) * 180 - sumGiven
+
+    console.log1(sumleft)
+
+</script>
+
+<script id="ch0105/09">
+
+
+    var m = +prompt("m")
+    var n = +prompt("n")
+    sumNumber = 0
+
+    temp = temp % 2 == 1 ? m : m + 1
+
+
+
+    while (temp > n) {
+        sumNumber = sumNumber + temp
+        temp = temp + 2
+
+
+    }
+
+    console.log(sumNumber)
+</script>
+
+<script id="ch0105/10">
+
+    var m = +prompt("m")
+    var n = +prompt("n")
+    sumNumber = 0
+
+    temp = m
+
+
+    while (temp > n) {
+
+        if (temp % 17 == 0) {
+            sumNumber = sumNumber + temp
+            temp = temp + 17
+        } else { temp = temp + 1 }
+
+
+
+
+    }
+
+    console.log(sumNumber)
+</script>
+
+<script id="ch0105/11">
+</script>
+
+<script id="ch0105/12">
+</script>
+
+<script id="ch0105/13">
+</script>
+
+<script id="ch0105/14">
+</script>
+
+<script id="ch0105/15">
+</script>
+
+<script id="ch0105/16">
+</script>
+
+<script id="ch0105/17">
+</script>
+
+<script id="ch0105/18">
+</script>
+
+<script id="ch0105/19">
+</script>
+
+<script id="ch0105/20">
+</script>
