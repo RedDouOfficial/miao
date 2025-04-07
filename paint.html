@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://class.damiaoedu.com:44314/codes/js/paint.html -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>画图</title>
+  <style>
+    canvas {
+      border: 2px solid #f0f;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas width="1000" height="1000" style="image-rendering: pixelated;"></canvas>
+
+  <script>
+    var canvas = document.querySelector('canvas')
+    canvas.style.imageRendering = 'pixelated' //放大时的插帧方式：不插帧，直接放大像素
+    var ctx = canvas.getContext('2d')
+
+    function dot(x, y, color = 'black') {
+      x = Math.round(x)
+      y = Math.round(y)
+      ctx.fillStyle = color
+      ctx.fillRect(x, y, 1, 1)
+    }
+    /**
+     * 你的任务：通过调用dot函数，实现：
+     * 需要注意，dot函数不能接收浮点数，如果参数为浮点数，会被转换为整数后绘制
+        * 在 坐标 (42, 42) 画出一个点
+        * 画一条水平实线，粗细为一个像素
+        * 画一条垂直实线，粗细为一个像素
+        * 画一条一个实点一个空点的虚线
+        * 画一条两个实点两个空点的虚线
+        * 画一条三个实点两个空点的虚线
+        * 画一条45度的斜线
+        * 画一条30度的斜线（与x轴的夹角呈30度）
+        * 画一条60度的斜线（与x轴的夹角呈60度）
+        * 画一条跨越画布左上角和右下角的对角线
+        * 画一个空心矩形
+        * 画一个实心矩形
+        * 画两个空心的圆，圆心在画布中心：
+          * 一个半径为50像素
+          * 一个半径为200像素
+        * 画一个实心的圆，半径至少为100像素
+        * 画一个【大小位置都合适】的sin(x)的图像
+        * 画一个贝塞尔曲线（二阶或三阶均可，二阶由三个点确定，三阶由四个点确定）
+  
+        * 画出rgb色彩空间的某一面（尺寸要大于100x100）
+        * 如果做出上一题后，尝试将其每个点的坐标乘以一个矩阵（如(2,0,0,2)或(1,0.27得到新的位置，即绘制出被线性变换后的色彩空间某一面
+          可以考虑如下几种矩阵：
+             2 0
+             0 2
+             ------
+             1  0.27
+             0  1
+             ------
+             0.5    0.87
+             -0.87  0.5
+  
+     */
+  </script>
+  <script>
+    // 不可更改上面的代码
+    // 你的代码写在这里
+
+    dot(42, 42, color = 'green')
+
+    for (i = 0; i < 1001; i++) {
+      dot(618, i, color = 'green')
+    }
+
+    for (i = 0; i < 1001; i++) {
+      dot(i, 618, color = 'red')
+    }
+
+    for (i = 0; i < 1001; i += 2) {
+      dot(i, 200, color = 'red')
+    }
+
+
+    for (i = 0; i < 1001; i++) {
+      if (i % 4 == 0 || i % 4 == 1)
+        dot(400, i, color = 'red')
+    }
+
+
+    for (i = 0; i < 1001; i++) {
+      if (i % 5 == 0 || i % 5 == 1 || i % 5 == 2)
+        dot(560, i, color = 'red')
+    }
+
+    for (var x = 0; x < 1000; x++) {
+      y = x
+      dot(x, y, "red")
+
+    }
+
+
+    for (var x = 0; x < 1000; x++) {
+      y = 0.5 * x + 5
+      dot(x, y, "red")
+
+    }
+
+
+    function drawRectangle(X, Y, a, b, color, mode) {
+      for (var x = X; x <= X + a; x++) {
+        for (var y = Y; y <= Y + b; y++) {
+          if (x >= X && x <= X + a && y >= Y && y <= Y + b) {
+            if (mode == "hollow") {
+              if ((x == X) || x == X + a || y == Y || y == Y + b) {
+                dot(x, y, color)
+              }
+
+            } else if (mode == "solid") {
+              dot(x, y, color)
+            }
+          }
+        }
+      }
+    }
+
+    drawRectangle(10, 10, 500, 300, "black", "hollow")
+
+    drawRectangle(100, 200, 50, 600, "black", "solid")
+
+
+    // 实心圆
+
+    for (var x = 0; x < 1000; x++) {
+      for (var y = 0; y < 1000; y++) {
+        if ((x - 500) ** 2 + (y - 300) ** 2 < 200 ** 2) {
+
+          dot(x, y, "red")
+
+        }
+      }
+    }
+
+
+
+
+
+    function drawLoop(a, b, r, thick, color) {
+
+      for (var x = 0; x < 1000; x++) {
+        for (var y = 0; y < 1000; y++) {
+          var standard = Math.round((x - a) ** 2 + (y - b) ** 2)
+
+          if (standard < r ** 2 + thick ** 2 && standard > r ** 2 - thick ** 2) {
+
+            dot(x, y, color)
+
+          }
+        }
+      }
+    }
+
+
+
+    drawLoop(500, 300, 260, 100, "rgb(265,155,0,0.4)")
+
+
+
+
+    function drawRGBFace(X, Y, a, b) {
+      for (var x = X; x <= X + a; x++) {
+        for (var y = Y; y <= Y + b; y++) {
+          var color1 = (x - X) / a
+          var color2 = (y - Y) / b
+
+          color = "rgb(" + "255," + Math.round((1 - color1) * 255) + "," + Math.round(color2 * 255) + ")"
+          console.log(color)
+          dot(x, y, color)
+
+
+        }
+      }
+    }
+
+
+    drawRGBFace(500, 300, 300, 300)
+
+
+
+
+    function drawSin(X, Y, a, b, color) {
+
+      var t = b / 2
+      for (x = X; x <= X + a; x++) {
+        dot(x, Y + Math.round(t * Math.sin(x / t)), color)
+      }
+    }
+
+
+    for (i = 700; i < 1500; i += 10) {
+
+
+      drawSin(0, i, 1000, 50, "blue")
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+  <div id="_qk_menu" style="inset: -66.3333px auto auto 30.8729%;">
+    <div class="quicker_button"><svg style="enable-background:new 0 0 32 32;" viewBox="0 0 32 32" x="0px" y="0px"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path
+          d="M5.8,29.5l8.4-13c0.2-0.2,0.1-0.6-0.1-0.7l-8.2-5.6c-0.3-0.2-0.3-0.6,0-0.8l10.8-8.8v0l6,6.5 c0.2,0.3,0.2,0.7-0.1,0.8l-3.3,1.5c-0.4,0.2-0.4,0.7-0.1,0.9l7.8,5.3c0.3,0.2,0.3,0.7,0,0.9L6.5,30.2C6,30.5,5.5,30,5.8,29.5z  M4.5,31.5"
+          fill="#FFFFFF"></path>
+      </svg></div>
+    <div class="dropdown-content"><button class="qk_action_button" title="">
+        <div class="btn_content_wrapper">
+          <div class="qk_action_icon"><img src="./画图_files/4F5BB3744BAF3C638325D4730674E5CFAC02D4FE.png"
+              class="icon_img"></div>
+          <div class="qk_action_label">DateUpdate</div>
+        </div>
+      </button></div>
+  </div>
+  <div>
+    <div
+      style="display: none; position: fixed; top: 30px; width: auto; max-width: 100%; text-align: center; left: 50%; transform: translateX(-50%); z-index: 99999999;">
+      <div
+        style="display: inline-block; font-size: 14px; font-weight: bold; border: 1px solid rgb(240, 195, 109); background-color: rgb(249, 237, 190); padding: 0px 10px; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;">
+      </div>
+    </div>
+  </div>
+  <div id="eagle-drag-images" style="position: fixed; top: -100000px;"></div>
+</body>
+
+</html>
